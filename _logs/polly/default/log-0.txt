@@ -1,0 +1,68 @@
+Execute command: [
+  `which`
+  `cmake`
+]
+[/home/danil/Danil12121/workspace/projects/lab07]> "which" "cmake"
+/usr/bin/cmake
+Execute command: [
+  `cmake`
+  `--version`
+]
+[/home/danil/Danil12121/workspace/projects/lab07]> "cmake" "--version"
+cmake version 3.28.3
+
+CMake suite maintained and supported by Kitware (kitware.com/cmake).
+Execute command: [
+  `cmake`
+  `-H.`
+  `-B/home/danil/Danil12121/workspace/projects/lab07/_builds/default`
+  `-DCMAKE_TOOLCHAIN_FILE=/home/danil/Danil12121/workspace/projects/lab07/tools/polly/default.cmake`
+]
+[/home/danil/Danil12121/workspace/projects/lab07]> "cmake" "-H." "-B/home/danil/Danil12121/workspace/projects/lab07/_builds/default" "-DCMAKE_TOOLCHAIN_FILE=/home/danil/Danil12121/workspace/projects/lab07/tools/polly/default.cmake"
+CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- [polly] Used toolchain: Default
+-- The C compiler identification is GNU 13.3.0
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- [hunter] Calculating Toolchain-SHA1
+-- [hunter] Calculating Config-SHA1
+-- [hunter] HUNTER_ROOT: /home/danil/projects/hunter
+-- [hunter] [ Hunter-ID: xxxxxxx | Toolchain-ID: fb15dbb | Config-ID: cf272be ]
+-- [hunter] GTEST_ROOT: /home/danil/projects/hunter/_Base/xxxxxxx/fb15dbb/cf272be/Install (ver.: 1.15.2)
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE
+CMake Error at CMakeLists.txt:70 (add_executable):
+  add_executable cannot create target "demo" because another target with the
+  same name already exists.  The existing target is an executable created in
+  source directory "/home/danil/Danil12121/workspace/projects/lab07".  See
+  documentation for policy CMP0002 for more details.
+
+
+CMake Error at /usr/share/cmake-3.28/Modules/CPack.cmake:685 (message):
+  CPack license resource file:
+  "/home/danil/Danil12121/workspace/projects/lab07/LICENSE" could not be
+  found.
+Call Stack (most recent call first):
+  /usr/share/cmake-3.28/Modules/CPack.cmake:690 (cpack_check_file_exists)
+  CPackConfig.cmake:24 (include)
+  CMakeLists.txt:75 (include)
+
+
+-- Configuring incomplete, errors occurred!
