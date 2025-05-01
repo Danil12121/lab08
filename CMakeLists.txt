@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.4)
-
 include("cmake/HunterGate.cmake")
+
 HunterGate(
-    URL "https://github.com/cpp-pm/hunter/archive/v0.23.251.tar.gz"
-    SHA1 "5659b15dc0884d4b03dbd95710e6a1fa0fc3258d"
+    URL "https://github.com/cpp-pm/hunter/archive/v0.23.308.tar.gz"
+    SHA1 "23f1b5a0acffae50fda423388c843a8e7b6e1eb0"
 )
 
 set(CMAKE_CXX_STANDARD 11)
@@ -22,8 +22,7 @@ set(PRINT_VERSION
 set(PRINT_VERSION_STRING "v${PRINT_VERSION}")
 
 hunter_add_package(GTest)
-find_package(GTest CONFIG REQUIRED)
-
+find_package(GTest REQUIRED)
 
 add_library(print STATIC ${CMAKE_CURRENT_SOURCE_DIR}/sources/print.cpp)
 
@@ -44,11 +43,6 @@ if(BUILD_EXAMPLES)
   endforeach(EXAMPLE_SOURCE ${EXAMPLE_SOURCES})
 endif()
 
-add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp)
-target_link_libraries(demo print)
-install(TARGETS demo RUNTIME DESTINATION bin)
-
-
 install(TARGETS print
     EXPORT print-config
     ARCHIVE DESTINATION lib
@@ -63,13 +57,16 @@ if(BUILD_TESTS)
   
   file(GLOB ${PROJECT_NAME}_TEST_SOURCES tests/*.cpp)
   add_executable(check ${${PROJECT_NAME}_TEST_SOURCES})
-  target_link_libraries(check ${PROJECT_NAME} GTest::main)
+  target_link_libraries(check ${PROJECT_NAME} GTest::GTest GTest::Main)
   add_test(NAME check COMMAND check)
 endif()
 
 add_executable(demo ${CMAKE_CURRENT_SOURCE_DIR}/demo/main.cpp)
+
 target_link_libraries(demo print)
+
 install(TARGETS demo RUNTIME DESTINATION bin)
 
+add_compile_options(-Wno-error=maybe-uninitialized)
 
 include(CPackConfig.cmake)
